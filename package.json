@@ -4,10 +4,11 @@
   "description": "Full Stack Open",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
+    "start": "set BROWSER=none&& webpack-dev-server --open --mode development",
     "start-prod": "node app.js",
     "test": "jest",
-    "eslint": "eslint './**/*.{js,jsx}'",
+    "eslint_old": "eslint './**/*.{js,jsx}'",
+    "eslint": "eslint ./**/*.{js,jsx}",
     "build": "webpack --mode production"
   },
   "repository": {
