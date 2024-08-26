@@ -43,7 +43,10 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    host: 'full-stack-open-pokedex-19aa.onrender.com'
+    host: 'full-stack-open-pokedex-19aa.onrender.com',
+    allowedHosts: [
+      '.onrender.com'
+    ]
   },
   plugins: [
     new HtmlWebPackPlugin({
