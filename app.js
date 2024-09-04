@@ -10,6 +10,7 @@ app.use(express.static('dist'))
 app.get('/health', (req, res) => {
   res.send('ok')
 })
+// just some change to trigger the deployment
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
