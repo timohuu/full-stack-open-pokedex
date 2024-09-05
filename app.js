@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 5000
 
 app.use(express.static('dist'))
 
+//taas joku dummy triggeri
+
 app.get('/health', (req, res) => {
   res.send('ok')
 })
