@@ -10,7 +10,7 @@ on:
 
 env:
   COMMIT_MESSAGES: ${{ join(github.event.commits.*.message) }}
-  CONDITION_SKIP: ${{ contains('$COMMIT_MESSAGES', '#skip') }}
+  CONDITION_SKIP: ${{ contains(join(github.event.commits.*.message), '#skip') }}
 
 jobs:
   simple_deployment_pipeline:
