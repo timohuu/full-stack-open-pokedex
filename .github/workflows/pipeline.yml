@@ -40,6 +40,8 @@ jobs:
   a_test_job:
     runs-on: ubuntu-20.04
     steps:
+      - name: kokeillaan skipillä, uusi yritys
+        run: echo "kokeillaan skipillä. onko condition true"
       - uses: actions/checkout@v4
       - name: commit messages
         run: echo "$COMMIT_MESSAGES"
