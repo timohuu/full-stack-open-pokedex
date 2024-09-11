@@ -59,4 +59,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_DISCOVERY_ACROSS_FILESYSTEM: true
-          SOURCE: /home/runner/work/full-stack-open-pokedex/full-stack-open-pokedex
+          SOURCE: /github/workspace
