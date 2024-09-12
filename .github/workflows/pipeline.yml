@@ -40,6 +40,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
+      - name: testing skip
+        run: echo "testing skip"
       - name: condition skip
         run: echo "$CONDITION_SKIP"
   tag_release:
