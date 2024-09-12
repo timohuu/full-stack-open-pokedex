@@ -12,6 +12,21 @@ env:
   CONDITION_SKIP: ${{ contains(join(github.event.commits.*.message), '#skip') }}
 
 jobs:
+  skipping_delivery_and_tagging:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-20.04
+    steps:
+      - name: CONDITION_SKIP value =
+        run: echo "$CONDITION_SKIP"
+      - name: not pull request?
+        if: ${{ github.event_name != 'push' }}
+        run: echo "skipping delivery&tagging as not merge pull request"
+      - name: skipping as '#skip' included?
+        if: ${{ github.event_name == 'push' && env.CONDITION_SKIP == 'false' }}
+        run: echo "skipping delivery&tagging as '#skip' included in the commit title"
+      - name: delivery and tagging going ahead?
+        if: ${{ github.event_name == 'push' && env.CONDITION_SKIP != 'false' }}
+        run: echo "delivery and tagging going ahead"
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
@@ -36,14 +51,6 @@ jobs:
       - name: Trigger deployment
         if: ${{ github.event_name == 'push' && env.CONDITION_SKIP == 'false' }}
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
-  a_test_job:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v4
-      - name: testing skip
-        run: echo "testing skip"
-      - name: condition skip
-        run: echo "$CONDITION_SKIP"
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
