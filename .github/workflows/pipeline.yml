@@ -12,7 +12,7 @@ env:
   CONDITION_SKIP: ${{ contains(join(github.event.commits.*.message), '#skip') }}
 
 jobs:
-  skipping_delivery_and_tagging?:
+  skipping_delivery_and_tagging:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
     steps:
