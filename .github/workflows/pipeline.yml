@@ -15,8 +15,6 @@ jobs:
   skipping_delivery_and_tagging:
     runs-on: ubuntu-20.04
     steps:
-      - name: CONDITION_SKIP value =
-        run: echo "$CONDITION_SKIP"
       - name: not pull request?
         if: ${{ github.event_name != 'push' }}
         run: echo "skipping delivery&tagging as not merge pull request"
