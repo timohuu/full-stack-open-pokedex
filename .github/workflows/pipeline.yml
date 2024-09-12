@@ -13,7 +13,6 @@ env:
 
 jobs:
   skipping_delivery_and_tagging:
-    needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
     steps:
       - name: CONDITION_SKIP value =
@@ -22,10 +21,10 @@ jobs:
         if: ${{ github.event_name != 'push' }}
         run: echo "skipping delivery&tagging as not merge pull request"
       - name: skipping as '#skip' included?
-        if: ${{ github.event_name == 'push' && env.CONDITION_SKIP == 'false' }}
+        if: ${{ github.event_name == 'push' && env.CONDITION_SKIP != 'false' }}
         run: echo "skipping delivery&tagging as '#skip' included in the commit title"
       - name: delivery and tagging going ahead?
-        if: ${{ github.event_name == 'push' && env.CONDITION_SKIP != 'false' }}
+        if: ${{ github.event_name == 'push' && env.CONDITION_SKIP == 'false' }}
         run: echo "delivery and tagging going ahead"
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
