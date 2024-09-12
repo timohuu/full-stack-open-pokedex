@@ -9,8 +9,7 @@ on:
     types: [opened, synchronize]
 
 env:
-  COMMIT_MESSAGES: ${{ join(github.event.commits.*.message) }}
-  CONDITION_SKIP: ${{ contains(COMMIT_MESSAGES), '#skip') }}
+  CONDITION_SKIP: ${{ contains(join(github.event.commits.*.message), '#skip') }}
 
 jobs:
   simple_deployment_pipeline:
@@ -40,11 +39,7 @@ jobs:
   a_test_job:
     runs-on: ubuntu-20.04
     steps:
-      - name: kokeillaan skipillä, uusi yritys
-        run: echo "kokeillaan skipillä. onko condition true"
       - uses: actions/checkout@v4
-      - name: commit messages
-        run: echo "$COMMIT_MESSAGES"
       - name: condition skip
         run: echo "$CONDITION_SKIP"
   tag_release:
