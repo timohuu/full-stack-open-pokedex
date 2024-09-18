@@ -53,7 +53,7 @@ jobs:
         if: ${{ success() && github.event_name == 'push' && env.CONDITION_SKIP == 'false'}}
         with:
             severity: info
-            details: New version of Pokedex deployed TPH
+            details: New version of Pokedex deployed TPH#2
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
   tag_release:
     needs: [simple_deployment_pipeline]
