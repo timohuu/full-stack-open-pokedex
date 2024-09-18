@@ -56,7 +56,7 @@ jobs:
           title: New version of Pokedex deployed (tph)
           message: "**${{ github.event.push.head_commit.message }}**\n**Creator:** ${{ github.event.push.head_commit.committer.name }}\n${{ github.event.push.head_commit.url }}"
       - name: event variables
-        run: echo ${{ github.event }}
+        run: echo ${{ github.event.push.commits }}
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
