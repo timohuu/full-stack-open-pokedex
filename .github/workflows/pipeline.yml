@@ -49,7 +49,7 @@ jobs:
         if: ${{ github.event_name == 'push' && env.CONDITION_SKIP == 'false' }}
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
       - name: New version deployed Success
-        uses: rjstone/discord-webhook-notify@v1
+        uses: rjstone/discord-webhook-notify@v1.0.2
         if: ${{ success() && github.event_name == 'push' && env.CONDITION_SKIP == 'false'}}
         with:
             severity: info
