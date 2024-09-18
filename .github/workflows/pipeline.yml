@@ -55,6 +55,8 @@ jobs:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           title: New version of Pokedex deployed (tph)
           message: "**${{ github.event.push.head_commit.message }}**\n**Creator:** ${{ github.event.push.head_commit.committer.name }}\n${{ github.event.push.head_commit.url }}"
+      - name: event variables
+        run: echo "event.push:\n${{ github.event.push }}"
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
