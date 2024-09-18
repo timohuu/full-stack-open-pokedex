@@ -53,8 +53,8 @@ jobs:
         if: ${{ success() && github.event_name == 'push' && env.CONDITION_SKIP == 'false'}}
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          title: New version of Pokedex deployed
-          message: "**${{ github.event.pull_request.title }}**\n**Creator:** ${{ github.event.pull_request.user.login }}\n${{ github.event.pull_request.html_url }}"
+          title: New version of Pokedex deployed (tph)
+          message: "**${{ github.event.push.title }}**\n**Creator:** ${{ github.event.push.user.login }}\n${{ github.event.push.html_url }}"
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
