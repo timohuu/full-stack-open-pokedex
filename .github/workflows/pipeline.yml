@@ -33,6 +33,8 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm install
+      - name: event variables 3
+        run: echo '${{toJSON(github.event)}}'
       - name: lint
         run: npm run eslint
       - name: build
@@ -66,8 +68,6 @@ jobs:
           message: "commit\n**${{ github.event.head_commit.message }}**\nby ** ${{ github.event.head_commit.author.name }}\n${{ github.event.head_commit.url }}"
       - name: event variables
         run: echo ${{ github.event.push.head_commit.message }}
-      - name: event variables 3
-        run: echo '${{toJSON(github.event)}}'
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
