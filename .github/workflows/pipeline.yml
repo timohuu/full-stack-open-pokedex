@@ -65,7 +65,7 @@ jobs:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           title: Pokedex build failed (tph)
           colour: '#FF3371'
-          message: "commit\n**${{ github.event.pull_request.title }}**\nby ** ${{ github.event.pull_request.user.login }}\n${{ ggithub.event.pull_request.html_url}}"
+          message: "commit\n**${{ github.event.pull_request.title }}**\nby ** ${{ github.event.pull_request.user.login }}\n${{ github.event.pull_request.html_url}}"
       - name: event variables
         run: echo ${{ github.event.push.head_commit.message }}
   tag_release:
