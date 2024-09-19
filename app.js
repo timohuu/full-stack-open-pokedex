@@ -11,6 +11,8 @@ app.get('/health', (req, res) => {
   res.send('ok')
 })
 
+this_causes_error
+
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`server started on port ${PORT}`)

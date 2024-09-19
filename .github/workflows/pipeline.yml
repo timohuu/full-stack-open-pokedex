@@ -33,6 +33,8 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm install
+      - name: event variables 3
+        run: echo '${{toJSON(github.event)}}'
       - name: lint
         run: npm run eslint
       - name: build
@@ -58,16 +60,14 @@ jobs:
           message: "in https://full-stack-open-pokedex-19aa.onrender.com by ${{ github.event.head_commit.author.name }}"
       - name: Discord message Build Failed
         uses: stegzilla/discord-notify@v2
-        if: ${{ failure() && github.event_name == 'push' && env.CONDITION_SKIP == 'false'}}
+        if: ${{ failure() }}
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           title: Pokedex build failed (tph)
           colour: '#FF3371'
-          message: "commit\n**${{ github.event.head_commit.message }}**\nby ** ${{ github.event.head_commit.author.name }}\n${{ github.event.head_commit.url }}"
+          message: "commit\n**${{ github.event.pull_request.title }}**\nby ** ${{ github.event.pull_request.user.login }}\n${{ github.event.pull_request.html_url}}"
       - name: event variables
         run: echo ${{ github.event.push.head_commit.message }}
-      - name: event variables 3
-        run: echo '${{toJSON(github.event)}}'
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
