@@ -57,8 +57,6 @@ jobs:
           message: "**${{ github.event.head_commit.message }}**\n**Creator:** ${{ github.event.push.head_commit.committer.name }}\n${{ github.event.push.head_commit.url }}"
       - name: event variables
         run: echo ${{ github.event.push.head_commit.message }}
-      - name: event variables 2
-        run: echo ${{ github.event.head_commit.message }}
       - name: event variables 3
         run: echo '${{toJSON(github.event)}}'
   tag_release:
