@@ -7,16 +7,13 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize]
-
-env:
-  CONDITION_SKIP: ${{ contains(join(github.event.commits.*.message), '#skip') }}
+  schedule:
+    - cron: '1,11,21,31,41,51 * * * *'  # runs on minutes: 1, 11, ...
 
 jobs:
   check_deployed_service_URL:
     runs-on: ubuntu-20.04
     steps:
-      #- name: disabled
-      #  run: echo "the following step is still disabled"
       - name: Check the deployed service URL
         uses: jtalk/url-health-check-action@v4
         with:
