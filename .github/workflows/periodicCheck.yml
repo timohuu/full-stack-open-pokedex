@@ -8,7 +8,8 @@ on:
     branches: [main]
     types: [opened, synchronize]
   schedule:
-    - cron: '1,11,21,31,41,51 * * * *'  # runs on minutes: 1, 11, ...
+    #- cron: '1,11,21,31,41,51 * * * *'  # runs on minutes: 1, 11, ...
+    - cron: '33 3 * * *'  # runs at 03:33
 
 jobs:
   check_deployed_service_URL:
