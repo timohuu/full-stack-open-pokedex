@@ -10,9 +10,6 @@ on:
   schedule:
     - cron: '1,11,21,31,41,51 * * * *'  # runs on minutes: 1, 11, ...
 
-env:
-  #CONDITION_SKIP: ${{ contains(join(github.event.commits.*.message), '#skip') }}
-
 jobs:
   check_deployed_service_URL:
     runs-on: ubuntu-20.04
