@@ -7,9 +7,10 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize]
-  schedule:
+  #schedule:
     #- cron: '1,11,21,31,41,51 * * * *'  # runs on minutes: 1, 11, ...
-    - cron: '33 3 * * *'  # runs at 03:33
+    #- cron: '33 3 * * *'  # runs at 03:33
+    # the above were working fine. Switching off.
 
 jobs:
   check_deployed_service_URL:
